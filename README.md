@@ -15,10 +15,10 @@
 
 ---
 
-`/home/hzt/.local/share/plasma/desktoptheme` 这是存放`plasma`主题 
+`/home/m2joy/.local/share/plasma/desktoptheme` 这是存放`plasma`主题 
 
-`/home/hzt/.local/share/plasma/look-and-feel/` 存放全局主题 
+`/home/m2joy/.local/share/plasma/look-and-feel/` 存放全局主题 
 
-`/home/hzt/.local/share/plasma/plasmoids/` 存放插件 
+`/home/m2joy/.local/share/plasma/plasmoids/` 存放插件 
 
 以上目录如果没有就自行创建。
