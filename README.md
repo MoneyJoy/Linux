@@ -13,6 +13,8 @@
 
 `sudo envycontrol -s nvidia --force-comp`
 
+---
+
 `/home/hzt/.local/share/plasma/desktoptheme` 这是存放`plasma`主题 
 
 `/home/hzt/.local/share/plasma/look-and-feel/` 存放全局主题 
