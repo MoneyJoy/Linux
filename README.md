@@ -22,3 +22,6 @@
 `/home/m2joy/.local/share/plasma/plasmoids/` 存放插件 
 
 以上目录如果没有就自行创建。
+
+#### 扩容swap分区方法
+![](./img/swap.jpg)
