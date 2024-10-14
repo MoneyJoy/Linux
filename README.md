@@ -25,3 +25,6 @@
 
 #### 扩容swap分区方法
 ![](./img/swap.jpg)
+
+#### 解决因nvidia驱动原因导致的无法休眠问题
+![](./img/hibernate.jpg)
