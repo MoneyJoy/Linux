@@ -29,4 +29,15 @@
 # Arch
 
 #### 解决因nvidia驱动原因导致的无法休眠问题
+
+##### 查看系统日志
+
+`journalctl -b`
+
+##### 过滤系统进入休眠和唤醒的相关日志
+`journalctl | grep -i 'suspend\|hibernate\|wakeup'`
+
 ![](./img/hibernate.jpg)
+
+
+
