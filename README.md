@@ -1,7 +1,7 @@
 # Arch
 ## 关于pacman对包的管理
 ### 依据响应速度设置源
-`sudo pacman-mirrors -i -c China -m rank`
+`sudo pacman-mirrors -i -c China -m rank`  
 在 Arch Linux 中，删除不再使用的依赖项有几种方式。通常这些依赖是通过 `pacman` 安装时作为依赖项安装的，但在不再需要时，它们依旧留在系统中。
 
 你可以使用以下方法删除不再使用的依赖：
