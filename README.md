@@ -61,6 +61,8 @@ sudo paccache -r -k1
 # KDE neon
 ## 两倍缩放  
 `Exec=env QT_AUTO_SCREEN_SCALE_FACTOR=2`
+## 显卡切换
+`sudo prime-select nvidia`
 
 
 
