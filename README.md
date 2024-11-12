@@ -58,6 +58,10 @@ sudo paccache -r -k1
 ### 总结
 通过这些方法，你可以有效清理不再使用的依赖，保持系统的整洁并释放空间。
 
+# KDE neon
+## 两倍缩放  
+`Exec=env QT_AUTO_SCREEN_SCALE_FACTOR=2`
+
 
 
 
