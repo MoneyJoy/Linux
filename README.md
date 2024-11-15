@@ -147,6 +147,33 @@ zypper update --all
 ```bash
 zypper import-gpg <key-file>
 ```
+要列出所有已安装的软件包，可以使用以下命令：
+
+```bash
+zypper se --installed-only
+```
+
+或简化为：
+
+```bash
+zypper search --installed-only
+```
+
+这会列出系统上所有已安装的软件包。
+
+如果你希望查看更详细的包信息（例如版本号、架构等），可以使用：
+
+```bash
+zypper info --installed-only
+```
+
+这个命令会列出每个已安装包的详细信息。如果只是想查看软件包名称和版本，可以使用：
+
+```bash
+rpm -qa
+```
+
+`rpm -qa` 是 `zypper` 的底层包管理工具，可以列出所有已安装的 RPM 包。
 - 导入 GPG 密钥文件，用于验证仓库的包。
 
 ---
