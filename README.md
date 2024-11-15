@@ -1,7 +1,4 @@
-`zypper` 是 openSUSE 和 SUSE Linux Enterprise 系统中的包管理工具，类似于其他 Linux 发行版中的 `apt`（Debian/Ubuntu）或 `yum/dnf`（CentOS/Fedora）。它用于安装、更新、卸载和管理软件包，此外还支持仓库管理和系统更新。
-
-以下是常用的 `zypper` 命令大全：
-
+#openSUSE
 ### 1. **安装软件包**
 ```bash
 zypper install <package-name>
