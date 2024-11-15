@@ -1,4 +1,4 @@
-#openSUSE
+# openSUSE
 ### 1. **安装软件包**
 ```bash
 zypper install <package-name>
