@@ -1,69 +1,163 @@
-# Arch
-## 关于pacman对包的管理
-### 依据响应速度设置源
-`sudo pacman-mirrors -i -c China -m rank`  
-在 Arch Linux 中，删除不再使用的依赖项有几种方式。通常这些依赖是通过 `pacman` 安装时作为依赖项安装的，但在不再需要时，它们依旧留在系统中。
+`zypper` 是 openSUSE 和 SUSE Linux Enterprise 系统中的包管理工具，类似于其他 Linux 发行版中的 `apt`（Debian/Ubuntu）或 `yum/dnf`（CentOS/Fedora）。它用于安装、更新、卸载和管理软件包，此外还支持仓库管理和系统更新。
 
-你可以使用以下方法删除不再使用的依赖：
+以下是常用的 `zypper` 命令大全：
 
-### 1. 使用 `pacman` 的 `-Rns` 选项删除包和孤立的依赖
-当你删除一个包时，可以使用 `-Rns` 选项，这会删除该包以及所有该包不再需要的依赖项：
+### 1. **安装软件包**
+```bash
+zypper install <package-name>
+```
+- 安装指定的软件包。
+
+### 2. **卸载软件包**
+```bash
+zypper remove <package-name>
+```
+- 卸载指定的软件包。
+
+### 3. **更新软件包**
+```bash
+zypper update <package-name>
+```
+- 更新指定的软件包到最新版本。
+
+### 4. **更新所有软件包**
+```bash
+zypper update
+```
+- 更新系统中所有安装的软件包。
+
+### 5. **升级系统**
+```bash
+zypper dup
+```
+- 升级系统，尤其是进行发行版升级时使用。
+
+### 6. **查找软件包**
+```bash
+zypper search <package-name>
+```
+- 搜索可用的软件包。
+
+### 7. **显示软件包信息**
+```bash
+zypper info <package-name>
+```
+- 显示指定软件包的详细信息（如版本、依赖关系等）。
+
+### 8. **列出已安装的软件包**
+```bash
+zypper list-updates
+```
+- 列出所有可以更新的软件包。
+
+### 9. **添加软件仓库**
+```bash
+zypper addrepo <url> <repo-name>
+```
+- 添加新的软件仓库。
+
+### 10. **列出已添加的仓库**
+```bash
+zypper repos
+```
+- 显示所有已添加的软件仓库。
+
+### 11. **删除软件仓库**
+```bash
+zypper removerepo <repo-name>
+```
+- 删除指定的软件仓库。
+
+### 12. **刷新软件仓库**
+```bash
+zypper refresh
+```
+- 刷新所有已配置的仓库，获取最新的软件包信息。
+
+### 13. **清理缓存**
+```bash
+zypper clean
+```
+- 清理 `zypper` 的缓存，以释放磁盘空间。
+
+### 14. **解决依赖问题**
+```bash
+zypper verify
+```
+- 检查并修复系统中的依赖问题。
+
+### 15. **显示安装软件包的依赖关系**
+```bash
+zypper info --requires <package-name>
+```
+- 显示指定软件包的依赖关系。
+
+### 16. **列出所有软件包的版本信息**
+```bash
+zypper versions
+```
+- 显示所有已安装的软件包的版本信息。
+
+### 17. **安装指定版本的软件包**
+```bash
+zypper install <package-name>=<version>
+```
+- 安装特定版本的软件包。
+
+### 18. **锁定软件包版本**
+```bash
+zypper addlock <package-name>
+```
+- 锁定某个软件包的当前版本，避免其被更新。
+
+### 19. **解锁软件包**
+```bash
+zypper removerlock <package-name>
+```
+- 解锁某个已锁定的软件包，允许其进行更新。
+
+### 20. **查询软件包的提供者**
+```bash
+zypper what-provides <file>
+```
+- 查询提供特定文件或程序的包。
+
+### 21. **查看软件包的变更日志**
+```bash
+zypper changelog <package-name>
+```
+- 查看指定软件包的变更日志。
+
+### 22. **显示某个软件包的安装文件**
+```bash
+zypper info --provides <package-name>
+```
+- 显示指定软件包提供的文件或功能。
+
+### 23. **检查并修复系统**
+```bash
+zypper dup --no-verify
+```
+- 在系统升级过程中，跳过验证步骤（适用于出现安装问题时）。
+
+### 24. **安装所有可用的更新（包括未安装的软件包）**
+```bash
+zypper update --all
+```
+- 更新系统，安装所有可用的更新，包括那些尚未安装的软件包。
+
+### 25. **导入 GPG 密钥**
+```bash
+zypper import-gpg <key-file>
+```
+- 导入 GPG 密钥文件，用于验证仓库的包。
+
+---
+
+这些是 `zypper` 常用的命令。如果你想进一步了解某个命令的用法，可以通过以下命令查看帮助：
 
 ```bash
-sudo pacman -Rns package_name
+zypper --help
 ```
 
-- `-R`: 删除包。
-- `-n`: 删除包的配置文件（如果有的话）。
-- `-s`: 同时删除没有其他包使用的依赖。
-
-### 2. 删除系统中的孤立包（不再被任何已安装的包依赖）
-如果系统中已经有了一些孤立的依赖包，您可以使用以下命令来清理这些包：
-
-```bash
-sudo pacman -Rns $(pacman -Qdtq)
-```
-
-- `pacman -Qdtq`：查找所有孤立的包（即不再作为其他包的依赖的包）。
-- `pacman -Rns`：删除这些包及其配置文件。
-
-### 3. 自动清理包缓存
-Arch 会保留包缓存（已安装和未安装的包），它们可能会占用大量空间。你可以使用 `paccache` 来清理这些缓存：
-
-```bash
-sudo paccache -r
-```
-
-这个命令会保留每个包的最近三个版本，删除其他版本。你可以通过 `-k` 选项来指定保留的版本数量。例如，要只保留最新的一个版本：
-
-```bash
-sudo paccache -r -k1
-```
-
-### 4. 自动删除未使用的依赖（启用 `RemoveUnneededDeps` 选项）
-你可以在 `/etc/pacman.conf` 中启用 `RemoveUnneededDeps` 选项，这样当你删除一个包时，pacman 会自动删除它的未使用依赖：
-
-1. 编辑 `/etc/pacman.conf`：
-   ```bash
-   sudo nano /etc/pacman.conf
-   ```
-
-2. 找到 `RemoveUnneededDeps` 选项，取消注释它（去掉 `#`），如下：
-   ```ini
-   #RemoveUnneededDeps
-   ```
-
-这样每次删除包时，pacman 都会自动删除未使用的依赖。
-
-### 总结
-通过这些方法，你可以有效清理不再使用的依赖，保持系统的整洁并释放空间。
-
-# KDE neon
-## 两倍缩放  
-`Exec=env QT_AUTO_SCREEN_SCALE_FACTOR=2`
-## 显卡切换
-`sudo prime-select nvidia`
-
-
-
-
+这个命令将列出所有 `zypper` 命令的选项和用法。
